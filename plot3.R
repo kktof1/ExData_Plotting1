@@ -10,6 +10,12 @@ my_data <- mutate(my_data, date_time = make_datetime(
         year(my_data$Date), month(my_data$Date), day(my_data$Date),
         hour(my_data$Time), minute(my_data$Time), second(my_data$Time)))
 
-plot(my_data$date_time, my_data$Global_active_power, type = 'l', 
-     xlab = "", ylab = "Global Active Power (killowatts)")
+plot(my_data$date_time, my_data$Sub_metering_1, type = 'l', 
+     col = "black", xlab = "", ylab = "Energy sub metering")
+lines(my_data$date_time, my_data$Sub_metering_2, type = 'l', col = "red")
+lines(my_data$date_time, my_data$Sub_metering_3, type = 'l', col = "blue")
+legend("topright",
+       legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"),
+       col = c("black", "red", "blue"),
+       lty = c(1, 1, 1))
 
